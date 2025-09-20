@@ -7,11 +7,11 @@ struct stack
     int top;
     int *arr;
 };
-struct stack *s;
+struct stack s;
 
 int is_empty()
 {
-    if (s->top == -1)
+    if (s.top == -1)
     {
         return 1;
     }
@@ -24,7 +24,7 @@ int is_empty()
 
 int is_full()
 {
-    if (s->top == s->size - 1)
+    if (s.top == s.size - 1)
     {
         return 1;
     }
@@ -42,8 +42,8 @@ void push(int val)
     }
     else
     {
-        s->top++;
-        s->arr[s->top] = val;
+        s.top++;
+        s.arr[s.top] = val;
     }
 }
 
@@ -56,26 +56,26 @@ void pop()
     else
     {
         //val = s->arr[s->top];
-        s->top--;
+        s.top--;
     }
 }
 
 int peek()
 {
-    return s->arr[s->top];
+    return s.arr[s.top];
 }
 
 int main()
 {
-    s = (struct stack *)malloc(sizeof(struct stack));  // ✅ Allocate memory for the struct first
-    if (s == NULL) {
-        printf("Memory allocation for stack failed\n");
-        return 1;
-    }
-    s->size = 5;
-    s->top = -1;
-    s->arr = (int *)malloc(s->size * sizeof(int));
-    if (s->arr == NULL)
+    // s = (struct stack *)malloc(sizeof(struct stack));  // ✅ Allocate memory for the struct first
+    // if (s == NULL) {
+    //     printf("Memory allocation for stack failed\n");
+    //     return 1;
+    
+    s.size = 5;
+    s.top = -1;
+    s.arr = (int *)malloc(s.size * sizeof(int));
+    if (s.arr == NULL)
     {
         printf("memory not allocated");
     }
@@ -87,5 +87,5 @@ int main()
     push(90);
     pop();
     printf("%d", peek());
-    free(s->arr);
+    free(s.arr);
 }
