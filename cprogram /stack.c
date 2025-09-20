@@ -71,7 +71,7 @@ int main()
     // if (s == NULL) {
     //     printf("Memory allocation for stack failed\n");
     //     return 1;
-    }
+    
     s.size = 5;
     s.top = -1;
     s.arr = (int *)malloc(s.size * sizeof(int));
